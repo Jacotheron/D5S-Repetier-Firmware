@@ -604,30 +604,30 @@ STEPPER_CURRENT_CONTROL
 #define HEATER_3_PIN -1
 #define TEMP_3_PIN -1
 
-#define ORIG_E0_STEP_PIN         43
-#define ORIG_E0_DIR_PIN          45
-#define ORIG_E0_ENABLE_PIN       41
-#define E0_FAN_PIN           20
+#define ORIG_E0_STEP_PIN      43
+#define ORIG_E0_DIR_PIN       45
+#define ORIG_E0_ENABLE_PIN    41
+#define E0_FAN_PIN            -1
 //  #define EXT1_EXTRUDER_COOLER_PIN E0_FAN_PIN
 
-#define ORIG_E1_STEP_PIN         49
-#define ORIG_E1_DIR_PIN          47
-#define ORIG_E1_ENABLE_PIN       48
-#define E1_FAN_PIN           -1
+#define ORIG_E1_STEP_PIN      49
+#define ORIG_E1_DIR_PIN       47
+#define ORIG_E1_ENABLE_PIN    48
+#define E1_FAN_PIN            -1
 //  #define EXT2_EXTRUDER_COOLER_PIN E1_FAN_PIN
 
-#define LED_PIN            -1
-#define ORIG_FAN_PIN            21
-#define ORIG_PS_ON_PIN          -1
-#define KILL_PIN           -1
+#define LED_PIN               -1
+#define ORIG_FAN_PIN          20
+#define ORIG_PS_ON_PIN        -1
+#define KILL_PIN              -1
 //PIN that has to be turned on right after start, to keep power flowing.
-#define SUICIDE_PIN        54
+#define SUICIDE_PIN           54
 
-#define SCK_PIN          52
-#define MISO_PIN         50
-#define MOSI_PIN         51
-#define SDPOWER          -1
-#define SDSS             53
+#define SCK_PIN               52
+#define MISO_PIN              50
+#define MOSI_PIN              51
+#define SDPOWER               -1
+#define SDSS                  53
 #define ORIG_SDCARDDETECT	    46
 
 #define E0_PINS ORIG_E0_STEP_PIN,ORIG_E0_DIR_PIN,ORIG_E0_ENABLE_PIN,

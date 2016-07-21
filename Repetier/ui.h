@@ -507,7 +507,7 @@ extern const int8_t encoder_table[16] PROGMEM ;
 #if MOTHERBOARD == 37
 #define SDCARDDETECT ORIG_SDCARDDETECT
 #else
-#define SDCARDDETECT 49
+#define SDCARDDETECT 46
 #endif
 #undef SDCARDDETECTINVERTED
 #define SDCARDDETECTINVERTED 0
