@@ -244,8 +244,8 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ENDSTOP_Y_MAX_INVERTING false
 #define MAX_HARDWARE_ENDSTOP_Y false
 #define ENDSTOP_PULLUP_Z_MAX true
-#define ENDSTOP_Z_MAX_INVERTING false
-#define MAX_HARDWARE_ENDSTOP_Z false
+#define ENDSTOP_Z_MAX_INVERTING true
+#define MAX_HARDWARE_ENDSTOP_Z true
 #define max_software_endstop_r true
 
 #define min_software_endstop_x false
@@ -274,9 +274,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define DISABLE_Y 0
 #define DISABLE_Z 0
 #define DISABLE_E 0
-#define INVERT_X_DIR 0
+#define INVERT_X_DIR 1
 #define INVERT_Y_DIR 0
-#define INVERT_Z_DIR 0
+#define INVERT_Z_DIR 1
 #define X_HOME_DIR -1
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
