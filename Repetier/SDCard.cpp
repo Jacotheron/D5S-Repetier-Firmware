@@ -80,12 +80,12 @@ void SDCard::initsd()
 #endif
 	HAL::pingWatchdog();
 	HAL::delayMilliseconds(50); // wait for stabilization of contacts, bootup ...
-    fat.begin(SDSS, SPI_HALF_SPEED);  // dummy init of SD_CARD
+    fat.begin(SDSS, SPI_DIV6_SPEED);  // dummy init of SD_CARD
     HAL::delayMilliseconds(50);       // wait for init end
 	HAL::pingWatchdog();
     /*if(dir[0].isOpen())
         dir[0].close();*/
-    if(!fat.begin(SDSS, SPI_HALF_SPEED))
+    if(!fat.begin(SDSS, SPI_DIV6_SPEED))
     {
         Com::printFLN(Com::tSDInitFail);
 		sdmode = 100; // prevent automount loop!
