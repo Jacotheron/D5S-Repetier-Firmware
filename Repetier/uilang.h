@@ -632,12 +632,12 @@
 #if HAVE_HEATED_BED && NUM_EXTRUDER == 2 && MIXING_EXTRUDER == 0
 #define UI_TEXT_MAINPAGE6_3_EN "\xe %eb/%Eb\xb0 Z:%x2"
 #elif FEATURE_DITTO_PRINTING
-#define UI_TEXT_MAINPAGE6_3_EN "Copies: %ed    Z:%x2"
-#else
-#define UI_TEXT_MAINPAGE6_3_EN "Flow:\xfd %of%%%   Z:%x2"
+#define UI_TEXT_MAINPAGE6_3_EN "Copies: %ed     Z:%x2"
+#else                                          
+#define UI_TEXT_MAINPAGE6_3_EN "Buf: %oB      Z:%x2" // Flow:\xfd %of%%%   Z:%x2
 #endif
-#define UI_TEXT_MAINPAGE6_4_EN "Mul: %om%%% \xfd   E: %x4m"
-#define UI_TEXT_MAINPAGE6_5_EN "Buf: %oB"
+#define UI_TEXT_MAINPAGE6_4_EN "Flow:\xfd %of%%%   E: %x4m" // Mul: %om%%% \xfd   E: %x4m
+#define UI_TEXT_MAINPAGE6_5_EN "Mul:  %om%%%" // Buf: %oB
 #define UI_TEXT_MAINPAGE6_6_EN "%os"
 #define UI_TEXT_MAINPAGE_TEMP_BED_EN cTEMP "%ec/%Ec" cDEG "B%eB/%Eb" cDEG
 #define UI_TEXT_MAINPAGE_BED_EN "B%eB/%Eb" cDEG
