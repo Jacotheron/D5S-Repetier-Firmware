@@ -617,7 +617,7 @@ STEPPER_CURRENT_CONTROL
 //  #define EXT2_EXTRUDER_COOLER_PIN E1_FAN_PIN
 
 #define LED_PIN               -1
-#define ORIG_FAN_PIN          20
+#define ORIG_FAN_PIN          21
 #define ORIG_PS_ON_PIN        -1
 #define KILL_PIN              -1
 //PIN that has to be turned on right after start, to keep power flowing.

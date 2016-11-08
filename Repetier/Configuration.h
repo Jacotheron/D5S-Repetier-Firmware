@@ -243,9 +243,9 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ENDSTOP_PULLUP_Y_MAX false
 #define ENDSTOP_Y_MAX_INVERTING false
 #define MAX_HARDWARE_ENDSTOP_Y false
-#define ENDSTOP_PULLUP_Z_MAX true
-#define ENDSTOP_Z_MAX_INVERTING true
-#define MAX_HARDWARE_ENDSTOP_Z true
+#define ENDSTOP_PULLUP_Z_MAX false
+#define ENDSTOP_Z_MAX_INVERTING false
+#define MAX_HARDWARE_ENDSTOP_Z false
 #define max_software_endstop_r true
 
 #define min_software_endstop_x false
@@ -253,7 +253,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define min_software_endstop_z false
 #define max_software_endstop_x true
 #define max_software_endstop_y true
-#define max_software_endstop_z false
+#define max_software_endstop_z true
 #define ENDSTOP_X_BACK_MOVE 5
 #define ENDSTOP_Y_BACK_MOVE 5
 #define ENDSTOP_Z_BACK_MOVE 2
@@ -511,7 +511,7 @@ Values must be in range 1..255
 #define BEEPER_SHORT_SEQUENCE 2,2
 #define BEEPER_LONG_SEQUENCE 8,8
 #define UI_SET_PRESET_HEATED_BED_TEMP_PLA 60
-#define UI_SET_PRESET_EXTRUDER_TEMP_PLA   190
+#define UI_SET_PRESET_EXTRUDER_TEMP_PLA   200
 #define UI_SET_PRESET_HEATED_BED_TEMP_ABS 110
 #define UI_SET_PRESET_EXTRUDER_TEMP_ABS   240
 #define UI_SET_MIN_HEATED_BED_TEMP  30
