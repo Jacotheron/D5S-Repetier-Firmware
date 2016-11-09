@@ -1,10 +1,10 @@
 # Repetier-Firmware for D5S - the fast and user friendly firmware
 
-This repository contains a forked version of the original Repetier Version (0.92.9), which is specifically tailored for the Wanhao D5S series printers. For this to work the pins for the Ultimaker board was modified.
+This repository contains a forked version of the original Repetier Version (0.92.9), which is specifically tailored for the Wanhao D5S series printers. For this to work the *pins.h* for the Ultimaker board was modified.
 
 ## Warning
 
-This firmware is Beta software and can have bugs. It is not recommended to run this firmware without knowledge of the firmware and how it interacts with your machine.
+**This firmware is Beta software and can have bugs. It is not recommended to run this firmware without knowledge of the firmware and how it interacts with your machine.**
 
 ## Changes
 * Made to work with a D5S Mainboard and D5S screen (the screen uses non-standard pinouts and other requirements).
@@ -17,17 +17,17 @@ This firmware is Beta software and can have bugs. It is not recommended to run t
 
 ## Configuration
 
-You are free to make changes to the configuration.h file, for example setting up special features. A few useful changes:
+You are free to make changes to the *configuration.h* file, for example setting up special features. A few useful changes:
 
 ### Decoupling
 Decoupling (shown as DEC in the place of the temperature after triggered) is a setting with the purpose of detecting a temperature sensor which no longer registers a correct temperature.
-This differs fom the DEF (defective) in that the sensor is still giving possible temperature readings. By default DEC will mark the sensor as decoupled, enable DryRun (which ignores the extrude commands) and shut down the heater (to protect you from a possible overheat/fire).
+This differs fom the DEF (defective) in that the sensor is still giving possible temperature readings. By default DEC will mark the sensor as decoupled, enable Dry Run (which ignores the extrude commands) and shut down the heater (to protect you from a possible overheat/fire).
 
 Decouple testing have the following settings in the firmware:
-* DECOUPLING_TEST_MAX_HOLD_VARIANCE - If the temperature sway more than this amount from the target temp (after reaching it), the sensor will be marked as Decoupled. Current 20
-* DECOUPLING_TEST_MIN_TEMP_RISE - When you set a target temperature, more than DECOUPLING_TEST_MAX_HOLD_VARIANCE above the current temperature, the sensor needs to increase at least this amount of degrees in a set time, or it will be marked as decoupled. Current 1
-* KILL_IF_SENSOR_DEFECT - What should be done when a sensor becomes defective/decoupled during a print. Values are 0 and 1; Current 1 to kill print.
-* EXT0_DECOUPLE_TEST_PERIOD - Time allowed for the minimum temp rise or it will be marked as decoupled. Current 20000 (value in milliseconds).
+* **DECOUPLING_TEST_MAX_HOLD_VARIANCE** - If the temperature sway more than this amount from the target temp (after reaching it), the sensor will be marked as Decoupled. Current 20
+* **DECOUPLING_TEST_MIN_TEMP_RISE** - When you set a target temperature, more than **DECOUPLING_TEST_MAX_HOLD_VARIANCE** above the current temperature, the sensor needs to increase at least this amount of degrees in a set time (**EXT0_DECOUPLE_TEST_PERIOD**), or it will be marked as decoupled. Current 1
+* **KILL_IF_SENSOR_DEFECT** - What should be done when a sensor becomes defective/decoupled during a print. Values are 0 and 1; Current 1 to kill print.
+* **EXT0_DECOUPLE_TEST_PERIOD** - Time allowed for the **DECOUPLING_TEST_MIN_TEMP_RISE** or it will be marked as decoupled. Current 20000 (value in milliseconds). Remember that the rasie needs to be from what it was when the new target was set (if it is cooling, it needs to make up for the cooling since as well).
 
 If you are printing a few print jobs after each other, it is best to set the nozzle to preheat between the prints while you remove the previous part and prepare the surface for the new print. Based on my testing, if the nozzle is cooling between 150 and 80C it is cooling way too fast to start a new print and you will get the Decoupled sensor error. If it cooled this far, I just let it cool to outside of this range and then set it to try again.
 
@@ -38,41 +38,43 @@ A stock Wanhao D5S printer comes with a thermocouple, that is amplified by a tin
 
 This firmware is set by default to rather use a thermistor (cheaper than the thermocouple) for temperature sensing. This requires a small change to your mainboard, or create a separate small board that does the exact same thing as the other change (see below for more details).
 A thermistor is Sensor type 1, while the stock thermocouple amplifier is a type 100 - there are a lot of other options too, see the comment in the configuration.h file.
-EXT0_TEMPSENSOR_TYPE - the setting which controls which sensor type to use.
+**EXT0_TEMPSENSOR_TYPE** - the setting which controls which sensor type to use.
 
-MIN_EXTRUDER_TEMP - The minimum temperature you want. If you need to print at lower temps, you can lower this.
-UI_SET_PRESET_EXTRUDER_TEMP_PLA - The temperature you want PLA to preheat to.
-UI_SET_PRESET_EXTRUDER_TEMP_ABS - The temperature you want ABS/PETG or other high temp materials to preheat to (remember the nozzle's maximum safe temperature is 250).
-UI_SET_MIN_EXTRUDER_TEMP - Minimum temperature that can be set by the UI
-UI_SET_MAX_EXTRUDER_TEMP - Maximum temperature that can be set by the UI
+Other useful temperature related settings.
+
+**MIN_EXTRUDER_TEMP** - The minimum temperature you want. If you need to print at lower temps, you can lower this.
+**UI_SET_PRESET_EXTRUDER_TEMP_PLA** - The temperature you want PLA to preheat to.
+**UI_SET_PRESET_EXTRUDER_TEMP_ABS** - The temperature you want ABS/PETG or other high temp materials to preheat to (remember the nozzle's maximum safe temperature is 250).
+**UI_SET_MIN_EXTRUDER_TEMP** - Minimum temperature that can be set by the UI
+**UI_SET_MAX_EXTRUDER_TEMP** - Maximum temperature that can be set by the UI
 
 ### Heatbed
 The older mainboards, which have 3 temperature sensing and 3 heater controlers are able to control a heatbed from the firmware (similar to what the guys with a D4, Di3, and D6 can do). Obviously you will nead to buy a heatbed and a few other components to do this. Most importantly you will need a Power Expander (available from reprap.me) since you will need a separate power supply dedicated to the heatbed (a 24V should be good, and for this size at least 200W) - the job of the Power Expander is simple: switch the power to the heatbed on and off, from the commands received from the mainboard.
 
 If your board suports it, and you have everything connected, you can set th following settings:
-* HAVE_HEATED_BED - set to 1 to enable
-* HEATED_BED_MAX_TEMP - heatbed max rated temperature (usually around 100C)
-* HEATED_BED_SENSOR_TYPE - what temp sensor is on the heatbed.
+* **HAVE_HEATED_BED** - set to 1 to enable
+* **HEATED_BED_MAX_TEMP** - heatbed max rated temperature (usually around 100C)
+* **HEATED_BED_SENSOR_TYPE** - what temp sensor is on the heatbed.
 
 ### Printer Max Size
 This firmware is configured to accomodate both the D5S Mini and a full D5S. This simply means that the printer will by default allow commands up to a Z of 590mm high. Having it firmware limited to this is not an issue for people with the Mini, since your Slicer needs to be configured to not give a command more than what your printer can actually handle (The Mini only supports a physical maximum of 200mm high). If you would like to firmware restrict your printer, you can set change it:
-Z_MAX_LENGTH
+**Z_MAX_LENGTH**
 
 ### EEPROM
-The EEPROM is enabled in this firmware. This allows you to easily change some key settings, perform a PID tune and save the values and other very nice functionality (like total printing time and filament used). However some settings will not overwrite the EEPROM if you flash the firmware again (after you made changes). To start with a clean EEPROM, change the EEPROM_MODE value.
+The EEPROM is enabled in this firmware. This allows you to easily change some key settings, perform a PID tune and save the values and other very nice functionality (like total printing time and filament used). However some settings will not overwrite the EEPROM if you flash the firmware again (after you made changes). To start with a clean EEPROM, change the **EEPROM_MODE** value.
 
 ### Languages
 This firmware by default compiles with support for all Repetier supported languages. This is very nice, since you can easily select your language from the configuration in the printer menu and everything is translated, but it uses more storage on your printer. You can disable all the languages you do not need and they will disappear from the printer (you can re-enable them and just flash the new firmware to your printer).
 
 ### Buzzer
-The buzzer can be enabled by setting FEATURE_BEEPER to 1.
+The buzzer can be enabled by setting **FEATURE_BEEPER** to 1.
 
 ## Documentation
 
 For documentation please visit [http://www.repetier.com/documentation/repetier-firmware/](http://www.repetier.com/documentation/repetier-firmware/)
 
 In order to compile this, you will need Arduino IDE (the latest is able to compile this firmware). The D5S mainboard is an Arduino Mega 2560 compatible board (you will need to select it from the Tools menu).
-The firmware Arduino File is located in "src/ArduinoAVR/Repetier/repetier.ino"
+The firmware Arduino File is located in "Repetier/repetier.ino"
 
 For now the firmware will not be in a ready to flash file format - you have the source to help debug and contibute to the development.
 
