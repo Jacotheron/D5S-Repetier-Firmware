@@ -158,12 +158,14 @@ This is the very simple option, if you are happy to solder onto your mainboard. 
 4. Remove the thermocouple and its amp from the nozzle and the pipe respectively, and connect your 100k NTC thermistor to the nozzle.
 5. The thermistor needs to be placed between the Ground (aka -) and the S (signal), so you can modify your 3 wire cable to accomodate only the outer 2 wires to the thermistor (center is the +). A thermistor does not care which side is the Signal and which is Ground.
 
+![alt tag](https://raw.githubusercontent.com/Jacotheron/D5S-Repetier-Firmware/master/img/r15-location.jpg)
 [[https://github.com/Jacotheron/D5S-Repetier-Firmware/blob/master/img/r15-location.jpg|alt=r15]]
 
 ### Option 2: Create a Voltage Divider board
 This is also a simple option with the added benifit of not modifying your mainboard in any way.
 You will need some Strip Board (or other compatible pc board), a 4.7k Ohm resistor, a jumper.
 
+![alt tag](https://raw.githubusercontent.com/Jacotheron/D5S-Repetier-Firmware/master/img/voltage-divider.png)
 [[https://github.com/Jacotheron/D5S-Repetier-Firmware/blob/master/img/voltage-divider.png|alt=voltagedivider]]
 
 Replicate this image with your stripboard:
