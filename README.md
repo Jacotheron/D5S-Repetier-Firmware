@@ -159,16 +159,15 @@ This is the very simple option, if you are happy to solder onto your mainboard. 
 5. The thermistor needs to be placed between the Ground (aka -) and the S (signal), so you can modify your 3 wire cable to accomodate only the outer 2 wires to the thermistor (center is the +). A thermistor does not care which side is the Signal and which is Ground.
 
 ![alt tag](https://raw.githubusercontent.com/Jacotheron/D5S-Repetier-Firmware/master/img/r15-location.jpg)
-[[https://github.com/Jacotheron/D5S-Repetier-Firmware/blob/master/img/r15-location.jpg|alt=r15]]
 
 ### Option 2: Create a Voltage Divider board
 This is also a simple option with the added benifit of not modifying your mainboard in any way.
 You will need some Strip Board (or other compatible pc board), a 4.7k Ohm resistor, a jumper.
 
 ![alt tag](https://raw.githubusercontent.com/Jacotheron/D5S-Repetier-Firmware/master/img/voltage-divider.png)
-[[https://github.com/Jacotheron/D5S-Repetier-Firmware/blob/master/img/voltage-divider.png|alt=voltagedivider]]
 
 Replicate this image with your stripboard:
+* The dots are the holes in the stripboard.
 * Blue lines are the strips of the board, and is below the board (image from the top / non-conductive side).
 * The Red is the 4.7k Ohm resistor - I uses a through hole resistor for this (important it needs to be between + and S)
 * The black is the jumper (connecting the signal to the side running to the thermistor) - technically if you do not want to use a connetcor for the thermistor, you can solder its wire directly to the Sig strip.
