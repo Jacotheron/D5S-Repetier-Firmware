@@ -1,6 +1,6 @@
 # Repetier-Firmware for D5S - the fast and user friendly firmware
 
-This repository contains a forked version of the original Repetier Version, which is specifically tailored for the Wanhao D5S series printers. For this to work the pins for the Ultimaker board was modified
+This repository contains a forked version of the original Repetier Version (0.92.9), which is specifically tailored for the Wanhao D5S series printers. For this to work the pins for the Ultimaker board was modified
 
 ## Warning
 
