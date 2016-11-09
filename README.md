@@ -38,15 +38,16 @@ A stock Wanhao D5S printer comes with a thermocouple, that is amplified by a tin
 
 This firmware is set by default to rather use a thermistor (cheaper than the thermocouple) for temperature sensing. This requires a small change to your mainboard, or create a separate small board that does the exact same thing as the other change (see below for more details).
 A thermistor is Sensor type 1, while the stock thermocouple amplifier is a type 100 - there are a lot of other options too, see the comment in the configuration.h file.
-**EXT0_TEMPSENSOR_TYPE** - the setting which controls which sensor type to use.
+
+* **EXT0_TEMPSENSOR_TYPE** - the setting which controls which sensor type to use.
 
 Other useful temperature related settings.
 
-**MIN_EXTRUDER_TEMP** - The minimum temperature you want. If you need to print at lower temps, you can lower this.
-**UI_SET_PRESET_EXTRUDER_TEMP_PLA** - The temperature you want PLA to preheat to.
-**UI_SET_PRESET_EXTRUDER_TEMP_ABS** - The temperature you want ABS/PETG or other high temp materials to preheat to (remember the nozzle's maximum safe temperature is 250).
-**UI_SET_MIN_EXTRUDER_TEMP** - Minimum temperature that can be set by the UI
-**UI_SET_MAX_EXTRUDER_TEMP** - Maximum temperature that can be set by the UI
+* **MIN_EXTRUDER_TEMP** - The minimum temperature you want. If you need to print at lower temps, you can lower this.
+* **UI_SET_PRESET_EXTRUDER_TEMP_PLA** - The temperature you want PLA to preheat to.
+* **UI_SET_PRESET_EXTRUDER_TEMP_ABS** - The temperature you want ABS/PETG or other high temp materials to preheat to (remember the nozzle's maximum safe temperature is 250).
+* **UI_SET_MIN_EXTRUDER_TEMP** - Minimum temperature that can be set by the UI.
+* **UI_SET_MAX_EXTRUDER_TEMP** - Maximum temperature that can be set by the UI.
 
 ### Heatbed
 The older mainboards, which have 3 temperature sensing and 3 heater controlers are able to control a heatbed from the firmware (similar to what the guys with a D4, Di3, and D6 can do). Obviously you will nead to buy a heatbed and a few other components to do this. Most importantly you will need a Power Expander (available from reprap.me) since you will need a separate power supply dedicated to the heatbed (a 24V should be good, and for this size at least 200W) - the job of the Power Expander is simple: switch the power to the heatbed on and off, from the commands received from the mainboard.
