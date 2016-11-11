@@ -138,40 +138,6 @@ pins. Separate multiple GCODEs with \n
 // ##                               Calibration                                            ##
 // ##########################################################################################
 
-/** Drive settings for the Delta printers
-*/
-#if DRIVE_SYSTEM == DELTA
-    // ***************************************************
-    // *** These parameter are only for Delta printers ***
-    // ***************************************************
-
-/** \brief Delta drive type: 0 - belts and pulleys, 1 - filament drive */
-#define DELTA_DRIVE_TYPE 0
-
-#if DELTA_DRIVE_TYPE == 0
-/** \brief Pitch in mm of drive belt. GT2 = 2mm */
-#define BELT_PITCH 2
-/** \brief Number of teeth on X, Y and Z tower pulleys */
-#define PULLEY_TEETH 20
-#define PULLEY_CIRCUMFERENCE (BELT_PITCH * PULLEY_TEETH)
-#elif DELTA_DRIVE_TYPE == 1
-/** \brief Filament pulley diameter in millimeters */
-#define PULLEY_DIAMETER 10
-#define PULLEY_CIRCUMFERENCE (PULLEY_DIAMETER * 3.1415927)
-#endif
-
-/** \brief Steps per rotation of stepper motor */
-#define STEPS_PER_ROTATION 200
-
-/** \brief Micro stepping rate of X, Y and Y tower stepper drivers */
-#define MICRO_STEPS 16
-
-// Calculations
-#define AXIS_STEPS_PER_MM ((float)(MICRO_STEPS * STEPS_PER_ROTATION) / PULLEY_CIRCUMFERENCE)
-#define XAXIS_STEPS_PER_MM AXIS_STEPS_PER_MM
-#define YAXIS_STEPS_PER_MM AXIS_STEPS_PER_MM
-#define ZAXIS_STEPS_PER_MM AXIS_STEPS_PER_MM
-#else
 // *******************************************************
 // *** These parameter are for all other printer types ***
 // *******************************************************
@@ -187,7 +153,6 @@ Overridden if EEPROM activated.*/
 #define YAXIS_STEPS_PER_MM 80
 /** \brief Number of steps for a 1mm move in z direction  Overridden if EEPROM activated.*/
 #define ZAXIS_STEPS_PER_MM 320
-#endif
 
 // ##########################################################################################
 // ##                           Extruder configuration                                     ##
@@ -362,126 +327,6 @@ The codes are only executed for multiple extruder when changing the extruder. */
 /** Pull-up resistor for jam pin? */
 #define EXT0_JAM_PULLUP 0
 
-// =========================== Configuration for second extruder ========================
-#define EXT1_X_OFFSET 0
-#define EXT1_Y_OFFSET 0
-#define EXT1_Z_OFFSET 0
-// for skeinforge 40 and later, steps to pull the plastic 1 mm inside the extruder, not out.  Overridden if EEPROM activated.
-#define EXT1_STEPS_PER_MM 373
-// What type of sensor is used?
-// 0 is no thermistor/temperature control
-// 1 is 100k thermistor (Epcos B57560G0107F000 - RepRap-Fab.org and many other)
-// 2 is 200k thermistor
-// 3 is mendel-parts thermistor (EPCOS G550)
-// 4 is 10k thermistor
-// 5 is userdefined thermistor table 0
-// 6 is userdefined thermistor table 1
-// 7 is userdefined thermistor table 2
-// 8 is ATC Semitec 104GT-2
-// 50 is userdefined thermistor table 0 for PTC thermistors
-// 51 is userdefined thermistor table 0 for PTC thermistors
-// 52 is userdefined thermistor table 0 for PTC thermistors
-// 60 is AD8494, AD8495, AD8496 or AD8497 (5mV/degC and 1/4 the price of AD595 but only MSOT_08 package)
-// 61 is AD8494, AD8495, AD8496 or AD8497 (5mV/degC and 1.25 Vref offset like adafruit breakout)
-// 97 Generic thermistor table 1
-// 98 Generic thermistor table 2
-// 99 Generic thermistor table 3
-// 100 is AD595
-// 101 is MAX6675
-#define EXT1_TEMPSENSOR_TYPE 3
-// Analog input pin for reading temperatures or pin enabling SS for MAX6675
-#define EXT1_TEMPSENSOR_PIN TEMP_2_PIN
-// Which pin enables the heater
-#define EXT1_HEATER_PIN HEATER_2_PIN
-#define EXT1_STEP_PIN E1_STEP_PIN
-#define EXT1_DIR_PIN E1_DIR_PIN
-// set to 0/1 for normal / inverse direction
-#define EXT1_INVERSE false
-#define EXT1_ENABLE_PIN E1_ENABLE_PIN
-// For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
-#define EXT1_ENABLE_ON false
-/* Set to 1 to mirror motor. Pins for mirrored motor are below */
-#define EXT1_MIRROR_STEPPER 0
-#define EXT1_STEP2_PIN E0_STEP_PIN
-#define EXT1_DIR2_PIN E0_DIR_PIN
-#define EXT1_INVERSE2 false
-#define EXT1_ENABLE2_PIN E0_ENABLE_PIN
-// The following speed settings are for skeinforge 40+ where e is the
-// length of filament pulled inside the heater. For repsnap or older
-// skeinforge use heigher values.
-//  Overridden if EEPROM activated.
-#define EXT1_MAX_FEEDRATE 25
-// Feedrate from halted extruder in mm/s
-//  Overridden if EEPROM activated.
-#define EXT1_MAX_START_FEEDRATE 12
-// Acceleration in mm/s^2
-//  Overridden if EEPROM activated.
-#define EXT1_MAX_ACCELERATION 10000
-/** Type of heat manager for this extruder.
-- 0 = Simply switch on/off if temperature is reached. Works always.
-- 1 = PID Temperature control. Is better but needs good PID values. Defaults are a good start for most extruder.
- Overridden if EEPROM activated.
-*/
-#define EXT1_HEAT_MANAGER 1
-/** Wait x seconds, after reaching target temperature. Only used for M109.  Overridden if EEPROM activated. */
-#define EXT1_WATCHPERIOD 1
-
-/** \brief The maximum value, I-gain can contribute to the output.
-
-A good value is slightly higher then the output needed for your temperature.
-Values for starts:
-130 => PLA for temperatures from 170-180 deg C
-180 => ABS for temperatures around 240 deg C
-
-The precise values may differ for different nozzle/resistor combination.
- Overridden if EEPROM activated.
-*/
-#define EXT1_PID_INTEGRAL_DRIVE_MAX 130
-/** \brief lower value for integral part
-
-The I state should converge to the exact heater output needed for the target temperature.
-To prevent a long deviation from the target zone, this value limits the lower value.
-A good start is 30 lower then the optimal value. You need to leave room for cooling.
- Overridden if EEPROM activated.
-*/
-#define EXT1_PID_INTEGRAL_DRIVE_MIN 60
-/** P-gain.  Overridden if EEPROM activated. */
-#define EXT1_PID_PGAIN_OR_DEAD_TIME   24
-/** I-gain.  Overridden if EEPROM activated.
-*/
-#define EXT1_PID_I   0.88
-/** D-gain.  Overridden if EEPROM activated.*/
-#define EXT1_PID_D 200
-// maximum time the heater is can be switched on. Max = 255.  Overridden if EEPROM activated.
-#define EXT1_PID_MAX 255
-/** \brief Faktor for the advance algorithm. 0 disables the algorithm.  Overridden if EEPROM activated.
-K is the factor for the quadratic term, which is normally disabled in newer versions. If you want to use
-the quadratic factor make sure ENABLE_QUADRATIC_ADVANCE is defined.
-L is the linear factor and seems to be working better then the quadratic dependency.
-*/
-#define EXT1_ADVANCE_K 0.0f
-#define EXT1_ADVANCE_L 0.0f
-/* Motor steps to remove backlash for advance algorithm. These are the steps
-needed to move the motor cog in reverse direction until it hits the driving
-cog. Direct drive extruder need 0. */
-#define EXT1_ADVANCE_BACKLASH_STEPS 0
-
-#define EXT1_WAIT_RETRACT_TEMP 	150
-#define EXT1_WAIT_RETRACT_UNITS	0
-#define EXT1_SELECT_COMMANDS "M117 Extruder 2"
-#define EXT1_DESELECT_COMMANDS ""
-/** The extruder cooler is a fan to cool the extruder when it is heating. If you turn the etxruder on, the fan goes on. */
-#define EXT1_EXTRUDER_COOLER_PIN -1
-/** PWM speed for the cooler fan. 0=off 255=full speed */
-#define EXT1_EXTRUDER_COOLER_SPEED 255
-/** Time in ms between a heater action and test of success. Must be more then time between turning heater on and first temp. rise! 
- * 0 will disable decoupling test */
-#define EXT1_DECOUPLE_TEST_PERIOD 18000
-/** Pin which toggles regularly during extrusion allowing jam control. -1 = disabled */
-#define EXT1_JAM_PIN -1
-/** Pull-up resistor for jam pin? */
-#define EXT1_JAM_PULLUP false
-
 /** If enabled you can select the distance your filament gets retracted during a
 M140 command, after a given temperature is reached. */
 #define RETRACT_DURING_HEATUP true
@@ -592,11 +437,8 @@ temperature*8.
 If you have a PTC thermistor instead of a NTC thermistor, keep the adc values increasing and use thermistor types 50-52 instead of 5-7!
 */
 /** Number of entries in the user thermistor table 0. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR0 28
-#define USER_THERMISTORTABLE0  {\
-  {1*4,864*8},{21*4,300*8},{25*4,290*8},{29*4,280*8},{33*4,270*8},{39*4,260*8},{46*4,250*8},{54*4,240*8},{64*4,230*8},{75*4,220*8},\
-  {90*4,210*8},{107*4,200*8},{128*4,190*8},{154*4,180*8},{184*4,170*8},{221*4,160*8},{265*4,150*8},{316*4,140*8},{375*4,130*8},\
-  {441*4,120*8},{513*4,110*8},{588*4,100*8},{734*4,80*8},{856*4,60*8},{938*4,40*8},{986*4,20*8},{1008*4,0*8},{1018*4,-20*8}	}
+#define NUM_TEMPS_USERTHERMISTOR0 0
+#define USER_THERMISTORTABLE0  {}
 
 /** Number of entries in the user thermistor table 1. Set to 0 to disable it. */
 #define NUM_TEMPS_USERTHERMISTOR1 0
@@ -639,47 +481,47 @@ Honeywell 100K Thermistor (135-104LAG-J01)  : R0 = 100000  T0 = 25  Beta = 3974
 */
 
 /** Reference Temperature */
-#define GENERIC_THERM1_T0 25
+//#define GENERIC_THERM1_T0 25
 /** Resistance at reference temperature */
-#define GENERIC_THERM1_R0 100000
+//#define GENERIC_THERM1_R0 100000
 /** Beta value of thermistor
 
 You can use the beta from the datasheet or compute it yourself.
 See http://reprap.org/wiki/MeasuringThermistorBeta for more details.
 */
-#define GENERIC_THERM1_BETA 4036
+//#define GENERIC_THERM1_BETA 4036
 /** Start temperature for generated thermistor table */
-#define GENERIC_THERM1_MIN_TEMP -20
+//#define GENERIC_THERM1_MIN_TEMP -20
 /** End Temperature for generated thermistor table */
-#define GENERIC_THERM1_MAX_TEMP 300
-#define GENERIC_THERM1_R1 0
-#define GENERIC_THERM1_R2 4700
+//#define GENERIC_THERM1_MAX_TEMP 300
+//#define GENERIC_THERM1_R1 0
+//#define GENERIC_THERM1_R2 4700
 
 // The same for table 2 and 3 if needed
 
 //#define USE_GENERIC_THERMISTORTABLE_2
-#define GENERIC_THERM2_T0 170
-#define GENERIC_THERM2_R0 1042.7
-#define GENERIC_THERM2_BETA 4036
-#define GENERIC_THERM2_MIN_TEMP -20
-#define GENERIC_THERM2_MAX_TEMP 300
-#define GENERIC_THERM2_R1 0
-#define GENERIC_THERM2_R2 4700
+//#define GENERIC_THERM2_T0 170
+//#define GENERIC_THERM2_R0 1042.7
+//#define GENERIC_THERM2_BETA 4036
+//#define GENERIC_THERM2_MIN_TEMP -20
+//#define GENERIC_THERM2_MAX_TEMP 300
+//#define GENERIC_THERM2_R1 0
+//#define GENERIC_THERM2_R2 4700
 
 //#define USE_GENERIC_THERMISTORTABLE_3
-#define GENERIC_THERM3_T0 170
-#define GENERIC_THERM3_R0 1042.7
-#define GENERIC_THERM3_BETA 4036
-#define GENERIC_THERM3_MIN_TEMP -20
-#define GENERIC_THERM3_MAX_TEMP 300
-#define GENERIC_THERM3_R1 0
-#define GENERIC_THERM3_R2 4700
+//#define GENERIC_THERM3_T0 170
+//#define GENERIC_THERM3_R0 1042.7
+//#define GENERIC_THERM3_BETA 4036
+//#define GENERIC_THERM3_MIN_TEMP -20
+//#define GENERIC_THERM3_MAX_TEMP 300
+//#define GENERIC_THERM3_R1 0
+//#define GENERIC_THERM3_R2 4700
 
 /** Supply voltage to ADC, can be changed by setting ANALOG_REF below to different value. */
-#define GENERIC_THERM_VREF 5
+//#define GENERIC_THERM_VREF 5
 /** Number of entries in generated table. One entry takes 4 bytes. Higher number of entries increase computation time too.
 Value is used for all generic tables created. */
-#define GENERIC_THERM_NUM_ENTRIES 33
+//#define GENERIC_THERM_NUM_ENTRIES 33
 
 // uncomment the following line for MAX6675 support.
 //#define SUPPORT_MAX6675
@@ -929,108 +771,19 @@ on this endstop.
 
 // Motor Current setting (Only functional when motor driver current ref pins are connected to a digital trimpot on supported boards)
 // Motor Current setting (Only functional when motor driver current ref pins are connected to a digital trimpot on supported boards)
-#if MOTHERBOARD==301
+//#if MOTHERBOARD==301
 //#define MOTOR_CURRENT {135,135,135,135,135} // Values 0-255 (RAMBO 135 = ~0.75A, 185 = ~1A)
-#define MOTOR_CURRENT_PERCENT {53,53,53,53,53}
-#elif MOTHERBOARD==12
+//#define MOTOR_CURRENT_PERCENT {53,53,53,53,53}
+//#elif MOTHERBOARD==12
 //#define MOTOR_CURRENT {35713,35713,35713,35713,35713} // Values 0-65535 (3D Master 35713 = ~1A)
-#define MOTOR_CURRENT_PERCENT {55,55,55,55,55}
-#endif
+//#define MOTOR_CURRENT_PERCENT {55,55,55,55,55}
+//#endif
 
 /** \brief Number of segments to generate for delta conversions per second of move
 */
 #define DELTA_SEGMENTS_PER_SECOND_PRINT 180 // Move accurate setting for print moves
 #define DELTA_SEGMENTS_PER_SECOND_MOVE 70 // Less accurate setting for other moves
 
-// Delta settings
-#if DRIVE_SYSTEM==DELTA
-/** \brief Delta rod length (mm)
-*/
-#define DELTA_DIAGONAL_ROD 345 // mm
-
-
-/*  =========== Parameter essential for delta calibration ===================
-
-            C, Y-Axis
-            |                        |___| CARRIAGE_HORIZONTAL_OFFSET (recommend set it to 0)
-            |                        |   \------------------------------------------
-            |_________ X-axis        |    \                                        |
-           / \                       |     \  DELTA_DIAGONAL_ROD (length)    Each move this Rod Height
-          /   \                             \                                 is calculated
-         /     \                             \    Carriage is at printer center!   |
-         A      B                             \_____/--------------------------------
-                                              |--| END_EFFECTOR_HORIZONTAL_OFFSET (recommend set it to 0)
-                                         |----| ROD_RADIUS (Horizontal rod pivot to pivot measure)
-                                     |-----------| PRINTER_RADIUS (recommend set it to ROD_RADIUS)
-
-    Column angles are measured from X-axis counterclockwise
-    "Standard" positions: alpha_A = 210, alpha_B = 330, alpha_C = 90
-*/
-
-/** \brief column positions - change only to correct build imperfections! */
-#define DELTA_ALPHA_A 210
-#define DELTA_ALPHA_B 330
-#define DELTA_ALPHA_C 90
-
-/** Correct radius by this value for each column. Perfect builds have 0 everywhere. */
-#define DELTA_RADIUS_CORRECTION_A 0
-#define DELTA_RADIUS_CORRECTION_B 0
-#define DELTA_RADIUS_CORRECTION_C 0
-
-/** Correction of the default diagonal size. Value gets added.*/
-#define DELTA_DIAGONAL_CORRECTION_A 0
-#define DELTA_DIAGONAL_CORRECTION_B 0
-#define DELTA_DIAGONAL_CORRECTION_C 0
-
-/** Max. radius (mm) the printer should be able to reach. */
-#define DELTA_MAX_RADIUS 200
-
-// Margin (mm) to avoid above tower minimum (xMin xMinsteps)
-// If your printer can put its carriage low enough the rod is horizontal without hitting the floor
-// set this to zero. Otherwise, measure how high the carriage is from horizontal rod
-// Also, movement speeds are 10x to 20x cartesian speeds at tower bottom.
-// You may need to leave a few mm for safety.
-// Hitting floor at high speed can damage your printer (motors, drives, etc)
-// THIS MAY NEED UPDATING IF THE HOT END HEIGHT CHANGES!
-#define DELTA_FLOOR_SAFETY_MARGIN_MM 15
-
-/** \brief Horizontal offset of the universal joints on the end effector (moving platform).
-*/
-#define END_EFFECTOR_HORIZONTAL_OFFSET 0
-
-/** \brief Horizontal offset of the universal joints on the vertical carriages.
-*/
-#define CARRIAGE_HORIZONTAL_OFFSET 0
-
-/** \brief Printer radius in mm,
-  measured from the center of the print area to the vertical smooth tower.
-  Alternately set this to the pivot to pivot horizontal rod distance, when head is at (0,0)
-*/
-#define PRINTER_RADIUS 124
-
-/** 1 for more precise delta moves. 0 for faster computation.
-Needs a bit more computation time. */
-#define EXACT_DELTA_MOVES 1
-
-/* ========== END Delta calibration data ==============*/
-
-/** When true the delta will home to z max when reset/powered over cord. That way you start with well defined coordinates.
-If you don't do it, make sure to home first before your first move.
-*/
-#define DELTA_HOME_ON_POWER 0
-
-/** To allow software correction of misaligned endstops, you can set the correction in steps here. If you have EEPROM enabled
-you can also change the values online and autoleveling will store the results here. */
-#define DELTA_X_ENDSTOP_OFFSET_STEPS 0
-#define DELTA_Y_ENDSTOP_OFFSET_STEPS 0
-#define DELTA_Z_ENDSTOP_OFFSET_STEPS 0
-
-#endif
-#if DRIVE_SYSTEM==TUGA
-// ========== Tuga special settings =============
-/* Radius of the long arm in mm. */
-#define DELTA_DIAGONAL_ROD 240
-#endif
 
 /** \brief Number of delta moves in each line. Moves that exceed this figure will be split into multiple lines.
 Increasing this figure can use a lot of memory since 7 bytes * size of line buffer * MAX_SELTA_SEGMENTS_PER_LINE
