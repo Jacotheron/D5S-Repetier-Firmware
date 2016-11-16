@@ -63,8 +63,8 @@
 #define MIXING_EXTRUDER 0
 
 #define DRIVE_SYSTEM 0
-#define XAXIS_STEPS_PER_MM 80
-#define YAXIS_STEPS_PER_MM 80
+#define XAXIS_STEPS_PER_MM 78.817734 // the belt is a MXL and not a GT2
+#define YAXIS_STEPS_PER_MM 78.817734 // the belt is a MXL and not a GT2
 #define ZAXIS_STEPS_PER_MM 320
 #define EXTRUDER_FAN_COOL_TEMP 50
 #define PDM_FOR_EXTRUDER 0
