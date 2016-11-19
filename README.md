@@ -121,3 +121,11 @@ I have created a guide to help you to do this mod with very little issues.
 
 ### pre v1.0b3
 Made the firmware compatible and a lot of other misc changes - these are lot logged here (but can be viewed in the Git history) since they are not important. The v1.0b2 was the first to be released publicly with minor bugs.
+
+# Donations
+
+I have created this firmware, since I needed it. I continue to improve on this firmware (adding more features, optimizing other features and settings), and will also offer support on it (through the Wanhao Google Group). All of this takes a lot of time and effort.
+
+If this firmware or my support helps you in any way, please considder a small donation.
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=872QV2XANTMME)
