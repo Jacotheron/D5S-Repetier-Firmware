@@ -177,3 +177,19 @@ Replicate this image with your stripboard:
 * The Beige is the connectors JST-XHP (a 2 pin for the thermistor and a 3-pin for the wire coming from the mainboard) - this is made to take the original wire directly (so that it can be undone).
 
 A voltage divider allows the mainboard to read the resistance of the thermistor. It works by comparing the voltage over the thermistor with that of a known fixed resistor (together they will always be 5V).
+
+# Changelog
+
+### v1.0b5
+- enhancement: embed changelog in Readme
+
+### v1.0b4
+- fixed: X and Y steps per mm
+    * The D5 printers use a MXL timing belt and not the GT2 belt (as previously thought). The difference in pitch is very slightly, but can cause incorrectly sized objects (2mm for the GT2 vs 2.032mm for the MXL).
+
+### v1.0b3
+- enhancement: made the firmware multi-lingual
+    * The firmware supports compiling with all the languages ready to be used. Previously only the English translation was compiled (others were disabled).
+
+### pre v1.0b3
+Made the firmware compatible and a lot of other misc changes - these are lot logged here (but can be viewed in the Git history) since they are not important. The v1.0b2 was the first to be released publicly with minor bugs.
