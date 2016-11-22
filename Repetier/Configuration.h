@@ -63,8 +63,8 @@
 #define MIXING_EXTRUDER 0
 
 #define DRIVE_SYSTEM 0
-#define XAXIS_STEPS_PER_MM 78.817734 // the belt is a MXL and not a GT2
-#define YAXIS_STEPS_PER_MM 78.817734 // the belt is a MXL and not a GT2
+#define XAXIS_STEPS_PER_MM 78.8177 // the belt is a MXL and not a GT2
+#define YAXIS_STEPS_PER_MM 78.8177 // the belt is a MXL and not a GT2
 #define ZAXIS_STEPS_PER_MM 320
 #define EXTRUDER_FAN_COOL_TEMP 50
 #define PDM_FOR_EXTRUDER 0
@@ -73,13 +73,13 @@
 #define DECOUPLING_TEST_MIN_TEMP_RISE 1
 #define KILL_IF_SENSOR_DEFECT 1
 #define RETRACT_ON_PAUSE 2
-#define PAUSE_START_COMMANDS ""
-#define PAUSE_END_COMMANDS ""
+#define PAUSE_START_COMMANDS "G91;\nG1 Z2;"
+#define PAUSE_END_COMMANDS "G1 Z2;\nG90"
 #define SHARED_EXTRUDER_HEATER 0
 #define EXT0_X_OFFSET 0
 #define EXT0_Y_OFFSET 0
 #define EXT0_Z_OFFSET 0
-#define EXT0_STEPS_PER_MM 310
+#define EXT0_STEPS_PER_MM 320
 #define EXT0_TEMPSENSOR_TYPE 1
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 #define EXT0_HEATER_PIN HEATER_0_PIN
@@ -95,7 +95,7 @@
 #define EXT0_ENABLE2_PIN ORIG_E0_ENABLE_PIN
 #define EXT0_MAX_FEEDRATE 50
 #define EXT0_MAX_START_FEEDRATE 20
-#define EXT0_MAX_ACCELERATION 5000
+#define EXT0_MAX_ACCELERATION 3000
 #define EXT0_HEAT_MANAGER 1
 #define EXT0_WATCHPERIOD 1
 #define EXT0_PID_INTEGRAL_DRIVE_MAX 255
@@ -113,7 +113,7 @@
 #define EXT0_DESELECT_COMMANDS ""
 #define EXT0_EXTRUDER_COOLER_PIN -1
 #define EXT0_EXTRUDER_COOLER_SPEED 255
-#define EXT0_DECOUPLE_TEST_PERIOD 20000
+#define EXT0_DECOUPLE_TEST_PERIOD 30000
 #define EXT0_JAM_PIN -1
 #define EXT0_JAM_PULLUP 0
 
@@ -282,7 +282,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define Z_HOME_DIR -1
 #define X_MAX_LENGTH 310
 #define Y_MAX_LENGTH 210
-#define Z_MAX_LENGTH 590
+#define Z_MAX_LENGTH 600
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
@@ -346,7 +346,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define MAX_TRAVEL_ACCELERATION_UNITS_PER_SQ_SECOND_Z 100
 #define INTERPOLATE_ACCELERATION_WITH_Z 0
 #define ACCELERATION_FACTOR_TOP 100
-#define MAX_JERK 10
+#define MAX_JERK 8
 #define MAX_ZJERK 0.3
 #define PRINTLINE_CACHE_SIZE 25
 #define MOVE_CACHE_LOW 10
@@ -383,7 +383,7 @@ It also can add a delay to wait for spindle to run on full speed.
 #define ACK_WITH_LINENUMBER 1
 #define WAITING_IDENTIFIER "wait"
 #define ECHO_ON_EXECUTE 1
-#define EEPROM_MODE 1
+#define EEPROM_MODE 2
 #undef PS_ON_PIN
 #define PS_ON_PIN ORIG_PS_ON_PIN
 #define JSON_OUTPUT 0
@@ -462,7 +462,7 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define SDCARDDETECTINVERTED 0
 #endif
 #define SD_EXTENDED_DIR 1 /** Show extended directory including file length. Don't use this with Pronterface! */
-#define SD_RUN_ON_STOP "G28 X0"
+#define SD_RUN_ON_STOP "G91\nG1 Z2;\nG28 X0"
 #define SD_STOP_HEATER_AND_MOTORS_ON_STOP 1
 #define ARC_SUPPORT 1
 #define FEATURE_MEMORY_POSITION 1
@@ -472,17 +472,17 @@ WARNING: Servos can draw a considerable amount of current. Make sure your system
 #define FEATURE_CONTROLLER 11
 #define ADC_KEYPAD_PIN -1
 #define LANGUAGE_EN_ACTIVE 1
-#define LANGUAGE_DE_ACTIVE 1
-#define LANGUAGE_NL_ACTIVE 1
-#define LANGUAGE_PT_ACTIVE 1
-#define LANGUAGE_IT_ACTIVE 1
-#define LANGUAGE_ES_ACTIVE 1
-#define LANGUAGE_FI_ACTIVE 1
-#define LANGUAGE_SE_ACTIVE 1
-#define LANGUAGE_FR_ACTIVE 1
-#define LANGUAGE_CZ_ACTIVE 1
-#define LANGUAGE_PL_ACTIVE 1
-#define LANGUAGE_TR_ACTIVE 1
+#define LANGUAGE_DE_ACTIVE 0
+#define LANGUAGE_NL_ACTIVE 0
+#define LANGUAGE_PT_ACTIVE 0
+#define LANGUAGE_IT_ACTIVE 0
+#define LANGUAGE_ES_ACTIVE 0
+#define LANGUAGE_FI_ACTIVE 0
+#define LANGUAGE_SE_ACTIVE 0
+#define LANGUAGE_FR_ACTIVE 0
+#define LANGUAGE_CZ_ACTIVE 0
+#define LANGUAGE_PL_ACTIVE 0
+#define LANGUAGE_TR_ACTIVE 0
 #define UI_PRINTER_NAME "Wanhao D5S"
 #define UI_PRINTER_COMPANY "XiliX Tech"
 #define UI_PAGES_DURATION 4000
