@@ -110,6 +110,16 @@ I have created a guide to help you to do this mod with very little issues.
 ### v1.0b5
 - enhancement: embed changelog in Readme
 - enhancement: offload Readme data to the Wiki, easier maintenance.
+- bug fix: printer shooting to left back corner on Pause - this was something the printer just did (uncommented the line).
+- bug fix: printer shooting to right back corner - this was due to too many decimal places in the Steps/MM, now reduced and tested.
+- bug fix: ranom weird characters on the display - this was due to all the languages getting compiled. English is now default, select only the language you want to use.
+- enhancement: Pausing the printer now raises the printer by 2mm (so the head does not melt the part). Resuming lowers with 2, to be at the correct place again.
+- enhancement: Stopping a print will raise the printer by 2mm, then Home in X.
+- enhancement: set E max acceleration to 3000, so that weaker stepper motors don't stall.
+- enhancement: increased decoupling test time to 30 seconds, should have a bit more user friendly when starting to heat while it is cooling.
+- enhancement: reduced the Max Jerk to 8, should give a bit better corners.
+- other: EEPROM Mode is now set to 2, which will erase your current EEPROM (save the time/filament usage before upgrade).
+
 
 ### v1.0b4
 - fixed: X and Y steps per mm
