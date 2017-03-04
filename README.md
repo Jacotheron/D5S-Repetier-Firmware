@@ -3,8 +3,11 @@
 This repository contains a forked version of the original Repetier Version (0.92.9), which is specifically tailored for the Wanhao D5S series printers. For this to work the *pins.h* for the Ultimaker board was modified.
 
 ## Warning
+While this firmware should simply work, I advise against updating to it while you are busy with an important project. Things can go wrong or simply with the new firmware the printer might be over extruding (better do those calibration cubes to get it perfect again).
 
-**This firmware is Beta software and can have bugs. It is not recommended to run this firmware without knowledge of the firmware and how it interacts with your machine.**
+After updating to this firmware, please perform the following:
+* PID Tune - this allows your printer to maintain temperature.
+* Extrusion Calibration - ensure you are pushing the correct amount of filament to not be over or under extruding (this firmware allows E-steps calibration and then final adjustment from your slicer).
 
 ## Changes
 * Made to work with a D5S Mainboard and D5S screen (the screen uses non-standard pinouts and other requirements).
@@ -14,6 +17,7 @@ This repository contains a forked version of the original Repetier Version (0.92
 * Buzzer have been disabled, is was getting irritating (but you can enable it).
 * Stopping a print will Home the head in the X direction (I hated the head just remaining where it was), before disabling the steppers.
 * EEPROM is enabled and thus a lot of values can be changed using Repetier Host. For subsequent changes, you may need to set the EEPROM mode to 1 or 2 (the number it is not currently).
+* Some people report having access to variable fan speed control while using this firmware.
 
 ## Configuration
 
@@ -106,6 +110,16 @@ I have created a guide to help you to do this mod with very little issues.
 [Voltage Divider Guide](https://github.com/Jacotheron/D5S-Repetier-Firmware/wiki/Voltage-Divider)
 
 # Changelog
+
+### v1.0rc1
+- enhancement: defaults to the Thermocouple Temperature sensor - since that is what the printer comes with, it is now the default.
+- enhancement: Pre-compiled a few common version of the firmware (stock with thermocouple; stock with thermistor; heatbed with thermistor) and also included the versions with Bootloaders. These are available in both .hex and .firm versions.
+- enhancement: Slicer Profiles included. I recommend Simplify 3D, but the price makes it not ideal for everyone. I included a Slic3r and CraftWare profile - these may need more work (pleease feel free to send me updated versions to include).
+- bug fix: Comments are back in the Configuration.H file - allowing you to easily see what can be changed and how to checnge them.
+- other: EEPROM Mode is now set to 1, which will erase your current EEPROM.
+- other: Performed compare with latest stable Repetier firmware version - applying changes.
+
+With this release, I am not expecting a lot of further changes, but just to be sure there are no bugs while performing these changes I am making this an RC (Release Candidate) version.
 
 ### v1.0b5
 - enhancement: embed changelog in Readme
