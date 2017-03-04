@@ -573,36 +573,36 @@ STEPPER_CURRENT_CONTROL
 #define ULTIMAKER_157
 #define KNOWN_BOARD 1
 
-#define ORIG_X_STEP_PIN 25
-#define ORIG_X_DIR_PIN 23
-#define ORIG_X_MIN_PIN 22
-#define ORIG_X_MAX_PIN 24
-#define ORIG_X_ENABLE_PIN 27
+#define ORIG_X_STEP_PIN        25
+#define ORIG_X_DIR_PIN         23
+#define ORIG_X_MIN_PIN         22
+#define ORIG_X_MAX_PIN         24
+#define ORIG_X_ENABLE_PIN      27
 
-#define ORIG_Y_STEP_PIN 31
-#define ORIG_Y_DIR_PIN 33
-#define ORIG_Y_MIN_PIN 26
-#define ORIG_Y_MAX_PIN 28
-#define ORIG_Y_ENABLE_PIN 29
+#define ORIG_Y_STEP_PIN        31
+#define ORIG_Y_DIR_PIN         33
+#define ORIG_Y_MIN_PIN         26
+#define ORIG_Y_MAX_PIN         28
+#define ORIG_Y_ENABLE_PIN      29
 
-#define ORIG_Z_STEP_PIN 37
-#define ORIG_Z_DIR_PIN 39
-#define ORIG_Z_MIN_PIN 30
-#define ORIG_Z_MAX_PIN 32
-#define ORIG_Z_ENABLE_PIN 35
+#define ORIG_Z_STEP_PIN        37
+#define ORIG_Z_DIR_PIN         39
+#define ORIG_Z_MIN_PIN         30
+#define ORIG_Z_MAX_PIN         32
+#define ORIG_Z_ENABLE_PIN      35
 
  // bed
-#define HEATER_1_PIN -1
-#define TEMP_1_PIN -1
+#define HEATER_1_PIN           6
+#define TEMP_1_PIN             9
 
-#define HEATER_0_PIN  5
-#define TEMP_0_PIN 8
+#define HEATER_0_PIN           5
+#define TEMP_0_PIN             8
 
-#define HEATER_2_PIN -1
-#define TEMP_2_PIN -1
+#define HEATER_2_PIN           7
+#define TEMP_2_PIN             10
 
-#define HEATER_3_PIN -1
-#define TEMP_3_PIN -1
+#define HEATER_3_PIN           -1
+#define TEMP_3_PIN             -1
 
 #define ORIG_E0_STEP_PIN      43
 #define ORIG_E0_DIR_PIN       45
@@ -628,7 +628,7 @@ STEPPER_CURRENT_CONTROL
 #define MOSI_PIN              51
 #define SDPOWER               -1
 #define SDSS                  53
-#define ORIG_SDCARDDETECT	    46
+#define ORIG_SDCARDDETECT     46
 
 #define E0_PINS ORIG_E0_STEP_PIN,ORIG_E0_DIR_PIN,ORIG_E0_ENABLE_PIN,
 #define E1_PINS ORIG_E1_STEP_PIN,ORIG_E1_DIR_PIN,ORIG_E1_ENABLE_PIN,
