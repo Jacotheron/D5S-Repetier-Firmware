@@ -190,7 +190,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 // 100 is AD595 *Thermocouple Amplifier for D5S
 // 101 is MAX6675
 // 102 is MAX31855
-#define EXT0_TEMPSENSOR_TYPE 100
+#define EXT0_TEMPSENSOR_TYPE 14
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN // use the pin defined in pins.h
 // Which pin enables the heater
