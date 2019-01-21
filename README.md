@@ -2,6 +2,9 @@
 
 This repository contains a forked version of the original Repetier Version (0.92.9), which is specifically tailored for the Wanhao D5S series printers. For this to work the *pins.h* for the Ultimaker board was modified.
 
+This version is old, as of 21 January 2019. For the latest version (based on Repetier 1.0.3), please visit [Repetier 1.0.3 Wanhao D5S](https://github.com/Jacotheron/Repetier-1.0.3-Wanhao-D5S)
+The newer version solves compiling errors.
+
 ## Warning
 While this firmware should simply work, I advise against updating to it while you are busy with an important project. Things can go wrong or simply with the new firmware the printer might be over extruding (better do those calibration cubes to get it perfect again).
 
